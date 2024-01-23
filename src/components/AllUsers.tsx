@@ -1,4 +1,5 @@
 import User from "../types/User";
+import { BACKEND_API_LINK } from "../configs/config";
 
 import React from "react";
 import { useState, useEffect } from "react";
@@ -10,7 +11,7 @@ const AllUsers: React.FC = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await axios.get("http://localhost:8080/users");
+                const response = await axios.get(BACKEND_API_LINK + "/users");
                 setUsers(response.data);
             } catch (error) {
                 console.error("Error fetching users:", error);

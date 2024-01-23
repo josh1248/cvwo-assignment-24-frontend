@@ -1,5 +1,6 @@
 import Home from "./pages/Home";
 import CreateNewUser from "./pages/CreateNewUser";
+import { HOME_ROUTE, CREATE_USER_ROUTE } from "./configs/config";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import React from "react";
@@ -10,8 +11,8 @@ const App: React.FC = () => {
         <div>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/users/new" element={<CreateNewUser />} />
+                    <Route path={HOME_ROUTE} element={<Home />} />
+                    <Route path={CREATE_USER_ROUTE} element={<CreateNewUser />} />
                 </Routes>
             </BrowserRouter>
         </div>

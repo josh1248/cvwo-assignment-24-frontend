@@ -1,3 +1,5 @@
+import { BACKEND_API_LINK, CREATE_USER_ROUTE } from "../configs/config";
+
 import React, { ChangeEvent, useState } from "react";
 import axios from "axios";
 
@@ -25,7 +27,7 @@ const CreateUser: React.FC = () => {
         console.log(JSON.stringify(formData));
 
         const response = await axios.post(
-            "http://localhost:8080/users/new",
+            BACKEND_API_LINK + CREATE_USER_ROUTE,
             JSON.stringify(formData),
             { headers: { "Content-Type": "application/json" } },
         );
@@ -38,12 +40,7 @@ const CreateUser: React.FC = () => {
             <form onSubmit={handleSubmit}>
                 <label>
                     Choose Your Username:
-                    <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                    />
+                    <input type="text" name="name" value={formData.name} onChange={handleChange} />
                 </label>
 
                 <br />
