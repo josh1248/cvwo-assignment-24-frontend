@@ -1,3 +1,13 @@
+# Dev Log
+initial setup considerations:
+- Redux: seems overkill as state management should be easily manageable in this small-scale project.
+- API communication: could use vanilla fetch requests, but I decided to use Axios as it simplifies API requests so much, and can decoding JSON data, handling asyncs, etc. Installed with `npm install axios`.
+
+
+
+# Learning Stuff
+- useState initializes with the initial value. it returns the state value and the function to mutate the state value. Convention is to call this mutator set(Name), for example `const [state, setState] = useState(initialValue);`.
+
 # CVWO Assignment Sample React App
 
 This sample React app is provided to help you experiment and practice web development fundamentals.
@@ -73,3 +83,35 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 This project uses [MUI](https://mui.com/),
 [TypewriterJS](https://github.com/tameemsafi/typewriterjs#readme),
 [ESLint](https://eslint.org/), [Prettier](https://prettier.io/).
+
+
+## create-react-app standard readme
+
+# Getting Started with Create React App
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
+
+### `npm test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
