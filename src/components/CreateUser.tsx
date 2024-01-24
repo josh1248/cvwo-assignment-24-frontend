@@ -1,4 +1,4 @@
-import { BACKEND_API_LINK, CREATE_USER_ROUTE } from "../configs/config";
+import { API_CREATE_USER, BACKEND_API_LINK } from "../configs/config";
 
 import React, { ChangeEvent, useState } from "react";
 import axios from "axios";
@@ -27,7 +27,7 @@ const CreateUser: React.FC = () => {
         console.log(JSON.stringify(formData));
 
         const response = await axios.post(
-            BACKEND_API_LINK + CREATE_USER_ROUTE,
+            BACKEND_API_LINK + API_CREATE_USER,
             JSON.stringify(formData),
             { headers: { "Content-Type": "application/json" } },
         );
