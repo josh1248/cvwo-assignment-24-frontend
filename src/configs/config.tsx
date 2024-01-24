@@ -5,3 +5,4 @@ export const API_CREATE_USER = "/api/new/users";
 
 export const HOME_ROUTE = "/";
 export const CREATE_USER_ROUTE = "/new/users";
+export const LOGIN_USER_ROUTE = "/login";

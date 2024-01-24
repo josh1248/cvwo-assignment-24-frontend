@@ -1,6 +1,7 @@
 import Home from "./pages/Home";
 import CreateNewUser from "./pages/CreateNewUser";
-import { HOME_ROUTE, CREATE_USER_ROUTE } from "./configs/config";
+import { HOME_ROUTE, CREATE_USER_ROUTE, LOGIN_USER_ROUTE } from "./configs/config";
+import SignIn from "./pages/SignIn";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import React from "react";
@@ -13,6 +14,7 @@ const App: React.FC = () => {
                 <Routes>
                     <Route path={HOME_ROUTE} element={<Home />} />
                     <Route path={CREATE_USER_ROUTE} element={<CreateNewUser />} />
+                    <Route path={LOGIN_USER_ROUTE} element={<SignIn />} />
                 </Routes>
             </BrowserRouter>
         </div>
