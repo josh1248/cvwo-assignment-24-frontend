@@ -1,4 +1,6 @@
 node_modules
 build
 .eslintrc.js
-pages/SignIn.tsx
+
+/*bootstrapped stuff from MUI*/
+pages/Sign*.tsx

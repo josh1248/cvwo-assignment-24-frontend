@@ -4,16 +4,14 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { CREATE_USER_ROUTE } from '../configs/config';
+import { API_LOGIN_USER, BACKEND_API_LINK, CREATE_USER_ROUTE } from '../configs/config';
+import axios from 'axios';
 
 function Copyright(props: any) {
   return (
@@ -32,13 +30,23 @@ function Copyright(props: any) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+
+    const request = {
+      "name": data.get("name"),
+      "password": data.get("password"),
+    }
+
+    //Stick with JSON for now, can change to multipart form data if desired.
+    try {
+      const response = await axios.post(BACKEND_API_LINK + API_LOGIN_USER, request);
+      console.log("API response:", response);
+    } catch (error) {
+      console.error("Error making POST request:", error);
+    }
+
   };
 
   return (
@@ -57,7 +65,7 @@ export default function SignIn() {
             <AccountCircleIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Login
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
@@ -65,7 +73,7 @@ export default function SignIn() {
               required
               fullWidth
               id="name"
-              label="Name"
+              label="Username"
               name="name"
               autoComplete="name"
               autoFocus
