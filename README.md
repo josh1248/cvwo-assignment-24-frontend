@@ -1,5 +1,7 @@
 # CVWO 2024 Assignment Frontend
 
+Name: Josh Thoo Jen Sen
+
 This is the progress of my React-TypeScript backend as of 25 January 2024.
 
 I will be doing my own changes to enhance this forum website, as I want to learn more. Please consider looking at my working frontend repository which I will commit to beyond the deadline: https://github.com/josh1248/forum-website-frontend
