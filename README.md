@@ -1,125 +1,76 @@
-# Dev Log
-initial setup considerations:
-- Redux: seems overkill as state management should be easily manageable in this small-scale project.
-- API communication: could use vanilla fetch requests, but I decided to use Axios as it simplifies API requests so much, and can decoding JSON data, handling asyncs, etc. Installed with `npm install axios`.
+# CVWO 2024 Assignment Frontend
 
-update dependencies by deleting the yarn lock file and running yarn install. it should sweep your files for dependencies.
+This is the progress of my React-TypeScript backend as of 25 January 2024.
 
-yarn `--legacy-peer-deps` setting enabled because MUI and axios have clashing peer depedency versions.
+I will be doing my own changes to enhance this forum website, as I want to learn more. Please consider looking at my working frontend repository which I will commit to beyond the deadline: https://github.com/josh1248/forum-website-frontend
 
-Important self-restriction: When talking with the API, the HTTP request route to the API must exactly match the API.
+This React app can handle:
+- Users: View of users, ability to create users (which you can verify by viewing users), login check of users, including passwords. Accepting cookies with JWT upon successful login.
+- Posts: View of posts.
 
-# Learning Stuff
-- useState initializes with the initial value. it returns the state value and the function to mutate the state value. Convention is to call this mutator set(Name), for example `const [state, setState] = useState(initialValue);`.
-- just like Golang, it is customary to name your component with the same name as the file name, even if it is not obligatory.
-  
-
-should implement themeprovider. check skeleton copy.
-
-# CVWO Assignment Sample React App
-
-This sample React app is provided to help you experiment and practice web development fundamentals.
-It shows how certain functionality can be implemented.
-However, do note that this is **far from a model example**.
-After all, we want to see how you maximise your learning in web development
-and good software development practices.
+I did not implement:
+- Users: Deletion of users, administrator capabilities.
+- Posts: creating, deleting, updating posts. Creating posts based on JWT, which would have allowed auto-fill of username when creating the post.
+- Comments: comments in posts.
 
 ## Getting Started
 
 ### Running the app
 
-1. [Fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) this repo.
-2. [Clone](https://docs.github.com/en/get-started/quickstart/fork-a-repo#cloning-your-forked-repository) **your** forked repo.
-3. Open your terminal and navigate to the directory containing your cloned project.
-4. Install dependencies for the project by entering this command:
+1. You should first set-up the backend through which this frontend will connect to. You can find the repo containing the backend snapshot [here](https://github.com/josh1248/cvwo-assignment-24-backend).
+2. Ensure that the backend server is running.
+3. [Fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) this repo.
+4. [Clone](https://docs.github.com/en/get-started/quickstart/fork-a-repo#cloning-your-forked-repository) **your** forked repo.
+5. Open your terminal and navigate to the directory containing your cloned project.
+6. Install dependencies for the project by entering this command:
 
 ```bash
 yarn install
 ```
 
-5. Run the app in development mode by entering this command:
+7. Run the app in development mode by entering this command:
 
 ```bash
 yarn start
 ```
 
-6. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-7. You should see a page like this.
-   ![Basic Page](public/images/BasicPage.png)
+8. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+9. You should be able to see a `Hello, World!` greeting, with 4 links to different parts of this website.
 
-### Navigating the code
 
-This is the main file structure
-
-```
-.
-├── node_modules
-├── public
-├── src
-├── README.md
-├── tsconfig.json
-├── package.json
-├── .eslintrc.js
-├── .prettierrc.js
-└── yarn.lock
-```
-
-Main directories/files to note:
-
--   `src` usually includes all your source code. That is where most of your functional code will be.
--   `README.md` is a form of documentation about the project. It is what you are reading right now.
--   `package.json` contains important metadata, for example, the dependencies and available scripts in the project.
--   `.eslintrc.js` contains the configuration for ESLint. ESLint is a tool to help enforce code consistency.
--   `.prettierrc.js` contains the configuration for Prettier. Prettier is a tool to help format code.
-
-Try changing some source code and see how the app changes.
-
-## Additional Notes
+### Implementation Details
 
 -   This project uses [Typescript](https://www.typescriptlang.org/).
--   The linting and code formatting rules are specified in `.eslintrc.js` and `.prettierrc.js` respectively.
-    You may modify the rules.
--   The available scripts are in `package.json`.
-    Here are some scripts that you are likely to use more often:
-    -   `yarn start`
-    -   `yarn lint:fix`
-    -   `yarn format:fix`
+-   This project uses [MUI](https://mui.com/). It has also bootstrapped the [Register / Login page templates](https://mui.com/material-ui/getting-started/templates/).
+-   ESLint and pretierrc are used, but ignore the templated pages above due to different coding syntax conventions.
+-   Axios is used as a framework for communications with the backend.
+-   react-dom-router is used to handle routing across the website.
+-   
 
-## Acknowledgements
+The file structure of the `src` folder is shown below. It is generated by the `file-tree-generator` extension at VSCode for free use.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-This project uses [MUI](https://mui.com/),
-[TypewriterJS](https://github.com/tameemsafi/typewriterjs#readme),
-[ESLint](https://eslint.org/), [Prettier](https://prettier.io/).
-
-
-## create-react-app standard readme
-
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+📦src
+ ┣ 📂components
+ ┃ ┣ 📜HelloWorld.tsx
+ ┃ ┣ 📜SeePosts.tsx
+ ┃ ┗ 📜SeeUsers.tsx
+ ┣ 📂configs
+ ┃ ┗ 📜config.tsx
+ ┣ 📂pages
+ ┃ ┣ 📜AllPosts.tsx
+ ┃ ┣ 📜AllUsers.tsx
+ ┃ ┣ 📜Home.tsx
+ ┃ ┣ 📜SignIn.tsx
+ ┃ ┗ 📜SignUp.tsx
+ ┣ 📂skeleton_copy
+ ┃ ┣ ... //carbon copy of src files as they were at time of fork. For reference.
+ ┣ 📂types
+ ┃ ┣ 📜Post.tsx
+ ┃ ┗ 📜User.tsx
+ ┣ 📜App.css
+ ┣ 📜App.tsx
+ ┣ 📜index.css
+ ┣ 📜index.tsx
+ ┗ 📜react-app-env.d.ts
+```
