@@ -5,7 +5,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const AllUsers: React.FC = () => {
+const SeeUsers: React.FC = () => {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -35,4 +35,4 @@ const AllUsers: React.FC = () => {
     );
 };
 
-export default AllUsers;
+export default SeeUsers;

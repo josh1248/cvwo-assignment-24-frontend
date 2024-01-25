@@ -10,8 +10,10 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { API_LOGIN_USER, BACKEND_API_LINK, CREATE_USER_ROUTE } from '../configs/config';
+import { API_LOGIN_USER, BACKEND_API_LINK, CREATE_USER_ROUTE, HOME_ROUTE } from '../configs/config';
 import axios from 'axios';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Copyright(props: any) {
   return (
@@ -30,6 +32,9 @@ function Copyright(props: any) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
+  const [errorText, setErrorText] = useState("");
+  const navigate = useNavigate(); //type inference not working here...
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -41,8 +46,18 @@ export default function SignIn() {
 
     //Stick with JSON for now, can change to multipart form data if desired.
     try {
-      const response = await axios.post(BACKEND_API_LINK + API_LOGIN_USER, request);
-      console.log("API response:", response);
+      const response = await axios.post(
+        BACKEND_API_LINK + API_LOGIN_USER,
+        request,
+        {
+          "withCredentials": true,
+        }
+      );
+
+      if (response.status == 200) {
+        console.log("API response:", response);
+        navigate(HOME_ROUTE);
+      }
     } catch (error) {
       console.error("Error making POST request:", error);
     }
@@ -75,7 +90,7 @@ export default function SignIn() {
               id="name"
               label="Username"
               name="name"
-              autoComplete="name"
+              autoComplete="username"
               autoFocus
             />
             <TextField
@@ -101,7 +116,11 @@ export default function SignIn() {
               </Link>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
+        {errorText && (
+          <Typography color="error" variant="body2" sx={{ mt: 2 }}>
+            {errorText}
+          </Typography>
+        )}
       </Container>
     </ThemeProvider>
   );
